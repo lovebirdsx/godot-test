@@ -8,9 +8,10 @@ func _init():
 
 func _process(delta: float) -> void:
 	var direction = 0
-	if Input.is_action_pressed("ui_left"):
+
+	if Input.is_action_pressed("ui_left") or Input.is_key_pressed(KEY_A):
 		direction = -1
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") or Input.is_key_pressed(KEY_D):
 		direction = 1
 
 	rotation += angular_speed * direction * delta
