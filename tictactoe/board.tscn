@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://kq30ib3hbcex"]
+
+[ext_resource type="Script" path="res://board.gd" id="1_0hpsk"]
+[ext_resource type="PackedScene" uid="uid://c8oabiqbkn4co" path="res://cell.tscn" id="1_dv0io"]
+
+[node name="Board" type="Node2D" node_paths=PackedStringArray("cells")]
+script = ExtResource("1_0hpsk")
+cells = [NodePath("Cell[0,0]"), NodePath("Cell[1,0]"), NodePath("Cell[2,0]"), NodePath("Cell[0,1]"), NodePath("Cell[1,1]"), NodePath("Cell[2,1]"), NodePath("Cell[0,2]"), NodePath("Cell[1,2]"), NodePath("Cell[2,2]")]
+
+[node name="Cell[0,0]" parent="." instance=ExtResource("1_dv0io")]
+
+[node name="Cell[1,0]" parent="." instance=ExtResource("1_dv0io")]
+position = Vector2(160, 0)
+pos = Vector2i(1, 0)
+
+[node name="Cell[2,0]" parent="." instance=ExtResource("1_dv0io")]
+position = Vector2(320, 0)
+pos = Vector2i(2, 0)
+
+[node name="Cell[0,1]" parent="." instance=ExtResource("1_dv0io")]
+position = Vector2(0, 160)
+pos = Vector2i(0, 1)
+
+[node name="Cell[1,1]" parent="." instance=ExtResource("1_dv0io")]
+position = Vector2(160, 160)
+pos = Vector2i(1, 1)
+
+[node name="Cell[2,1]" parent="." instance=ExtResource("1_dv0io")]
+position = Vector2(320, 160)
+pos = Vector2i(2, 1)
+
+[node name="Cell[0,2]" parent="." instance=ExtResource("1_dv0io")]
+position = Vector2(0, 320)
+pos = Vector2i(0, 2)
+
+[node name="Cell[1,2]" parent="." instance=ExtResource("1_dv0io")]
+position = Vector2(160, 320)
+pos = Vector2i(1, 2)
+
+[node name="Cell[2,2]" parent="." instance=ExtResource("1_dv0io")]
+position = Vector2(320, 320)
+pos = Vector2i(2, 2)

@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8oabiqbkn4co"]
+[gd_scene load_steps=4 format=3 uid="uid://c8oabiqbkn4co"]
 
-[ext_resource type="Script" path="res://tictactoe/cell.gd" id="1_g1p8c"]
+[ext_resource type="Script" path="res://cell.gd" id="1_g1p8c"]
+[ext_resource type="StyleBox" uid="uid://d4imspmv8sba4" path="res://style_box_flat_focus.tres" id="2_dg1u6"]
+[ext_resource type="StyleBox" uid="uid://ccjqnwugq11fr" path="res://style_box_flat_normal.tres" id="3_nix2u"]
 
 [node name="Cell" type="Node2D"]
 script = ExtResource("1_g1p8c")
 
 [node name="Button" type="Button" parent="."]
-offset_right = 128.0
-offset_bottom = 128.0
+offset_right = 160.0
+offset_bottom = 160.0
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = ExtResource("2_dg1u6")
+theme_override_styles/normal = ExtResource("3_nix2u")
 text = "O"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
