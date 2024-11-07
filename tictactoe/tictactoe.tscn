@@ -1,23 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://51y811pmof1e"]
+[gd_scene load_steps=6 format=3 uid="uid://51y811pmof1e"]
 
 [ext_resource type="PackedScene" uid="uid://cvnj61yevyawp" path="res://hud.tscn" id="1_8p5k1"]
 [ext_resource type="Script" path="res://main.gd" id="1_y33ed"]
 [ext_resource type="PackedScene" uid="uid://kq30ib3hbcex" path="res://board.tscn" id="2_wuxie"]
 [ext_resource type="Script" path="res://tictactoe.gd" id="4_fvqm7"]
+[ext_resource type="Script" path="res://ai.gd" id="5_ygtam"]
 
-[node name="Tictactoe" type="Node2D" node_paths=PackedStringArray("board", "hud", "tictactoe")]
+[node name="Tictactoe" type="Node2D" node_paths=PackedStringArray("board", "hud", "tictactoe", "ai")]
 script = ExtResource("1_y33ed")
 board = NodePath("board")
 hud = NodePath("hud")
 tictactoe = NodePath("logic")
+ai = NodePath("ai")
 
 [node name="hud" parent="." instance=ExtResource("1_8p5k1")]
 
 [node name="board" parent="." instance=ExtResource("2_wuxie")]
-position = Vector2(158, 53)
+position = Vector2(158, 144)
 
 [node name="logic" type="Node" parent="."]
 script = ExtResource("4_fvqm7")
 
+[node name="ai" type="Node" parent="."]
+script = ExtResource("5_ygtam")
+
 [connection signal="start_game" from="hud" to="." method="_on_hud_start_game"]
 [connection signal="cell_clicked" from="board" to="." method="_on_board_cell_clicked"]
+[connection signal="game_over" from="logic" to="." method="_on_logic_game_over"]

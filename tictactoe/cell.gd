@@ -9,6 +9,11 @@ signal clicked
 const Constants = preload("res://define.gd")
 const State = Constants.State
 
+
+func set_enabled(enabled: bool) -> void:
+	$Button.disabled = not enabled
+
+
 func set_state(state: State) -> void:
 	# 通过设置文本来设置状态
 	match state:

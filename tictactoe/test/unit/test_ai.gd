@@ -1,7 +1,7 @@
 extends GutTest
 
-var ai
-var tictactoe
+var ai: Ai
+var tictactoe: Tictactoe
 
 
 func before_each():

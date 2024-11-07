@@ -15,11 +15,27 @@ const State = Constants.State
 func _ready():
 	for cell in cells:
 		cell.clicked.connect(_on_cell_clicked.bind(cell))
+	start()
+	end()
+
+
+func _set_enabled(enabled: bool):
+	for cell in cells:
+		cell.set_enabled(enabled)
+
+
+func start():
+	_set_enabled(true)
+	for cell in cells:
 		cell.set_state(State.EMPTY)
 
 
+func end():
+	_set_enabled(false)
+
+
 func set_state(pos: Vector2i, type: State):
-	var cell: Cell = cells[pos.x * 3 + pos.y]
+	var cell: Cell = cells[pos.y * 3 + pos.x]
 	cell.set_state(type)
 
 

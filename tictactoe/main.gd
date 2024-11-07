@@ -3,21 +3,58 @@ extends Node2D
 @export var board: Board
 @export var hud: Hud
 @export var tictactoe: Tictactoe
+@export var ai: Ai
+
+
+func _ready() -> void:
+	hud.show_start_button()
+	hud.show_message("Press Start")
+
+
+func start_game() -> void:
+	tictactoe.reset_game()
+	board.start()
+	hud.hide_start_button()
+	hud.show_message("Player " + tictactoe.player_to_string(tictactoe.current_player) + "'s turn")
+
+
+func win(player: Tictactoe.Player) -> void:
+	board.end()
+	var message = "Player " + tictactoe.player_to_string(player) + " wins!"
+	hud.show_message(message)
+	await get_tree().create_timer(2.0).timeout
+	hud.show_start_button()
+
+
+func draw() -> void:
+	board.end()
+	hud.show_message("It's a draw!")
+	await get_tree().create_timer(2.0).timeout
+	hud.show_start_button()
 
 
 func _on_board_cell_clicked(pos: Vector2i) -> void:
-	tictactoe.set_cell(pos.x, pos.y)
 	board.set_state(pos, tictactoe.current_player)
-	if tictactoe.state == tictactoe.GameState.WIN:
-		hud.show_message("Player " + str(tictactoe.current_player) + " wins!")
-		hud.show_start_button()
-	elif tictactoe.state == tictactoe.GameState.DRAW:
-		hud.show_message("It's a draw!")
-		hud.show_start_button()
-	else:
-		hud.show_message("Player " + str(tictactoe.current_player) + "'s turn")
+	tictactoe.set_cell(pos.x, pos.y)
+	if tictactoe.state == tictactoe.GameState.PLAYING:
+		hud.show_message("Player " + tictactoe.player_to_string(tictactoe.current_player) + "'s turn")
+
+		if tictactoe.current_player == tictactoe.Player.PLAYER_O:
+			var move = ai.get_best_move(tictactoe.board, tictactoe.current_player)
+			await get_tree().create_timer(0.5).timeout
+			hud.show_message("Player " + tictactoe.player_to_string(tictactoe.current_player) + " is thinking...")
+			await get_tree().create_timer(0.5).timeout
+			_on_board_cell_clicked(move)
 
 
 func _on_hud_start_game() -> void:
-	hud.hide_message()
-	hud.hide_start_button()
+	start_game()
+
+
+func _on_logic_game_over(state: Tictactoe.GameState, winner: Tictactoe.Player) -> void:
+	match state:
+		Tictactoe.GameState.WIN:
+			win(winner)
+		Tictactoe.GameState.DRAW:
+			draw()
+		

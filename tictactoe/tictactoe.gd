@@ -17,6 +17,16 @@ func _init():
 	reset_game()
 
 
+func player_to_string(player):
+	match player:
+		Player.PLAYER_X:
+			return "X"
+		Player.PLAYER_O:
+			return "O"
+		Player.NONE:
+			return " "
+
+
 func reset_game():
 	board = []
 	for i in range(GRID_SIZE):
@@ -45,7 +55,7 @@ func set_cell(x, y):
 		game_over.emit(state, current_player)
 	elif check_draw():
 		state = GameState.DRAW
-		game_over.emit(state, null)  # 修复此处
+		game_over.emit(state, Player.NONE)
 	else:
 		switch_player()
 	return true
