@@ -6,6 +6,8 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
-    "**/.godot": true
-  }
+    "**/.godot": true,
+    "**/.export": true
+  },
+  "gut-extension.additionalOptions": "-d --headless",
 }

@@ -5,8 +5,7 @@ class_name Board
 signal cell_clicked(pos: Vector2i)
 
 
-const Constants = preload("res://define.gd")
-const State = Constants.State
+const State = preload("res://define.gd").State
 
 
 @export var cells: Array[Cell] = []
@@ -40,5 +39,4 @@ func set_state(pos: Vector2i, type: State):
 
 
 func _on_cell_clicked(cell: Cell):
-	print("Cell clicked:", cell.pos)
 	cell_clicked.emit(cell.pos)

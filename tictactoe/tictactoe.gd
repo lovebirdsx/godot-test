@@ -1,5 +1,3 @@
-extends Node
-
 class_name Tictactoe
 
 enum Player { NONE = 0, PLAYER_X, PLAYER_O }

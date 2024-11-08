@@ -2,13 +2,14 @@ extends Node2D
 
 @export var board: Board
 @export var hud: Hud
-@export var tictactoe: Tictactoe
-@export var ai: Ai
 
+var tictactoe:Tictactoe = Tictactoe.new()
+var ai:Ai = Ai.new()
 
 func _ready() -> void:
 	hud.show_start_button()
 	hud.show_message("Press Start")
+	tictactoe.game_over.connect(_on_logic_game_over)
 
 
 func start_game() -> void:

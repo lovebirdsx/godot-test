@@ -6,8 +6,7 @@ class_name Cell
 
 signal clicked
 
-const Constants = preload("res://define.gd")
-const State = Constants.State
+const State = preload("res://define.gd").State
 
 
 func set_enabled(enabled: bool) -> void:
@@ -25,6 +24,5 @@ func set_state(state: State) -> void:
 			$Button.text = "O"
 
 
-func _on_button_pressed() -> void:	
-	print(pos)
+func _on_button_pressed() -> void:
 	clicked.emit()

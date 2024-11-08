@@ -1,5 +1,3 @@
-extends Node
-
 class_name Ai
 
 func get_best_move(board, player):
