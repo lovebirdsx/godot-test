@@ -1,0 +1,6 @@
+{
+  "watch": ["."],
+  "ignore": [".godot"],
+  "exec": "Godot_v4.3-stable_win64.exe --no-header --headless -s ./test.gd",
+  "ext": "gd"
+}
