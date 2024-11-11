@@ -1,7 +1,9 @@
+const COUNT = 1000000
+
 func _sum1() -> int:
     var start_time = Time.get_ticks_msec()
     var _sum: int = 0
-    for i in range(1, 100000001):
+    for i in range(1, COUNT+1):
         _sum += i
     var end_time = Time.get_ticks_msec()
     var elapsed = end_time - start_time
@@ -11,7 +13,7 @@ func _sum1() -> int:
 func _sum2() -> int:
     var start_time = Time.get_ticks_msec()
     var _sum = 0
-    for i in range(1, 100000001):
+    for i in range(1, COUNT+1):
         _sum += i
     var end_time = Time.get_ticks_msec()
     var elapsed = end_time - start_time
