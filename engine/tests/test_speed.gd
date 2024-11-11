@@ -1,4 +1,4 @@
-const COUNT = 1000000
+const COUNT = 10000
 
 func _sum1() -> int:
     var start_time = Time.get_ticks_msec()
