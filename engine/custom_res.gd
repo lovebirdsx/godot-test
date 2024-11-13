@@ -24,5 +24,6 @@ func set_damage(new_damage):
 func get_damage():
 	return damage
 
+
 func _init() -> void:
 	print('title = ', title, 'size = ', size)

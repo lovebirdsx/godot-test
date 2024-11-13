@@ -1,0 +1,1 @@
+Godot_v4.3-stable_win64.exe --server --position 0,0  & disown && Godot_v4.3-stable_win64.exe --position 800,0

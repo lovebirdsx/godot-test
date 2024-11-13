@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfo078g3pkken"]
+
+[ext_resource type="Script" path="res://custom_node.gd" id="1_psc8p"]
+
+[node name="CustomNode" type="Node2D"]
+script = ExtResource("1_psc8p")

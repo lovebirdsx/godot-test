@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_ddtn0")
-name = "hello"
+title = ""
 size = Vector2(100, 100)
+damage = 8.0
