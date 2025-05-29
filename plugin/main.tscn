@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpo1ngvwg23aj"]
 
-[ext_resource type="Script" path="res://addons/my_first_plugin/my_button.gd" id="1_trhcb"]
+[ext_resource type="Script" uid="uid://bq6epw4lmp0ic" path="res://addons/my_first_plugin/my_button.gd" id="1_trhcb"]
 
 [node name="Main" type="Node2D"]
 

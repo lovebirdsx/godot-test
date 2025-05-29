@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://51y811pmof1e"]
 
 [ext_resource type="PackedScene" uid="uid://cvnj61yevyawp" path="res://hud.tscn" id="1_8p5k1"]
-[ext_resource type="Script" path="res://main.gd" id="1_y33ed"]
+[ext_resource type="Script" uid="uid://f4bgrcvjkegn" path="res://main.gd" id="1_y33ed"]
 [ext_resource type="PackedScene" uid="uid://kq30ib3hbcex" path="res://board.tscn" id="2_wuxie"]
 
 [node name="Tictactoe" type="Node2D" node_paths=PackedStringArray("board", "hud")]

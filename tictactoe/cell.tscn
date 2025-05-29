@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8oabiqbkn4co"]
 
-[ext_resource type="Script" path="res://cell.gd" id="1_g1p8c"]
+[ext_resource type="Script" uid="uid://p3ln68y8gys" path="res://cell.gd" id="1_g1p8c"]
 [ext_resource type="StyleBox" uid="uid://d4imspmv8sba4" path="res://style_box_flat_focus.tres" id="2_dg1u6"]
 [ext_resource type="StyleBox" uid="uid://ccjqnwugq11fr" path="res://style_box_flat_normal.tres" id="3_nix2u"]
 

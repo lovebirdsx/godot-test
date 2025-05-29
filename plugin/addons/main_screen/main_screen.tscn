@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2ghvb08yyn2t"]
 
-[ext_resource type="Script" path="res://addons/main_screen/button.gd" id="1_w68a0"]
+[ext_resource type="Script" uid="uid://c4ucsrjuvf0ea" path="res://addons/main_screen/button.gd" id="1_w68a0"]
 
 [node name="MainScreen" type="CenterContainer"]
 anchors_preset = 15

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://kq30ib3hbcex"]
 
-[ext_resource type="Script" path="res://board.gd" id="1_0hpsk"]
+[ext_resource type="Script" uid="uid://hh4nf2qvse84" path="res://board.gd" id="1_0hpsk"]
 [ext_resource type="PackedScene" uid="uid://c8oabiqbkn4co" path="res://cell.tscn" id="1_dv0io"]
 
 [node name="Board" type="Node2D" node_paths=PackedStringArray("cells")]
