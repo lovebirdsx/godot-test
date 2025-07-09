@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://r8mgk451jf0r"]
+
+[ext_resource type="Script" uid="uid://dwqkkeb48yipy" path="res://character_stats.gd" id="1_owoke"]
+
+[resource]
+script = ExtResource("1_owoke")
+max_health = 100.0
+attack_power = 10.0
+movement_speed = 200.0
+defense = 5.0
+metadata/_custom_type_script = "uid://dwqkkeb48yipy"
