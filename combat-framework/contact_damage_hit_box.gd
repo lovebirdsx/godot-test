@@ -37,4 +37,4 @@ func _on_attack_timer_timeout() -> void:
 	var stats = character.stats
 	for area in target_areas:
 		if area.owner and area.owner.has_method("take_damage"):
-			area.owner.take_damage(stats.contact_damage, character.faction)
+			area.owner.take_damage(stats.contact_damage)

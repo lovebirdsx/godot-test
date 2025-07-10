@@ -25,12 +25,11 @@ func _physics_process(_delta: float) -> void:
 func get_move_dir():
 	return Vector2.ZERO
 
-func take_damage(damage_amount: float, source_faction: Faction):
-	if source_faction.can_attack(faction.defenseLayer):
-		current_health -= damage_amount
-		print(name + " took " + str(damage_amount) + " damage. Health is now " + str(current_health))
-		if current_health <= 0:
-			die()
+func take_damage(damage_amount: float):
+	current_health -= damage_amount
+	print(name + " took " + str(damage_amount) + " damage. Health is now " + str(current_health))
+	if current_health <= 0:
+		die()
 
 func die():
 	print(name + " has died.")

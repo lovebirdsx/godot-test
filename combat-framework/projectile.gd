@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D):
 	if area.owner and area.owner.has_method("take_damage"):
-		area.owner.take_damage(damage, owner_faction)
+		area.owner.take_damage(damage)
 
 	queue_free()
 
