@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_pe8wg")
 attackLayer = 2
-attackTargets = Array[int]([1])
+attackTargets = Array[int]([8])
 defenseLayer = 16
 metadata/_custom_type_script = "uid://bn1xciy5bt0oy"

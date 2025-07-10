@@ -15,6 +15,12 @@ run/main_scene="uid://cwlo1t0qhhnnd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+player=""
+enemy=""
+pet=""
+
 [input]
 
 ui_left={

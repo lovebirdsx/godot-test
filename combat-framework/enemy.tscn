@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3e6wxjmxmak8"]
+[gd_scene load_steps=9 format=3 uid="uid://d3e6wxjmxmak8"]
 
 [ext_resource type="PackedScene" uid="uid://04l7qkembmj2" path="res://base_character.tscn" id="1_epg4t"]
 [ext_resource type="Script" uid="uid://c7l13cy57qf0j" path="res://enemy.gd" id="2_4gyqm"]
 [ext_resource type="Resource" uid="uid://r8mgk451jf0r" path="res://config/stats/enemy.tres" id="3_3yqyl"]
 [ext_resource type="Resource" uid="uid://bhtnkfr5ssbvl" path="res://config/faction/enemy.tres" id="4_wujgv"]
+[ext_resource type="Script" uid="uid://b2io2bjihp8sn" path="res://contact_damage_hit_box.gd" id="5_epg4t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 radius = 20.0
 
-[node name="Enemy" instance=ExtResource("1_epg4t")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ci853"]
+radius = 20.0
+
+[node name="Enemy" groups=["enemy"] instance=ExtResource("1_epg4t")]
 script = ExtResource("2_4gyqm")
 stats = ExtResource("3_3yqyl")
 faction = ExtResource("4_wujgv")
@@ -20,3 +27,14 @@ polygon = PackedVector2Array(13, -48, 25, -43, 36, -35, 43, -25, 48, -13, 50, 0,
 
 [node name="Shape" parent="HurtBox" index="0"]
 shape = SubResource("CircleShape2D_iifgy")
+
+[node name="PhysicsShape" parent="." index="3"]
+shape = SubResource("CircleShape2D_epg4t")
+
+[node name="ContactDamageHitBox" type="Area2D" parent="." index="4"]
+script = ExtResource("5_epg4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactDamageHitBox" index="0"]
+shape = SubResource("CircleShape2D_ci853")
+
+[node name="AttackTimer" type="Timer" parent="ContactDamageHitBox" index="1"]

@@ -3,6 +3,7 @@ extends BaseCharacter
 @onready var attack_manager: Node = $AttackManager
 
 func _ready() -> void:
+    super._ready()
     for attack in attack_manager.get_children():
         if attack is BaseAttack:
             attack.caster = self

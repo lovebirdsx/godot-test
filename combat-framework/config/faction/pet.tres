@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Faction" load_steps=2 format=3 uid="uid://cr4bgceku8bxf"]
+
+[ext_resource type="Script" uid="uid://bn1xciy5bt0oy" path="res://faction.gd" id="1_5utax"]
+
+[resource]
+script = ExtResource("1_5utax")
+attackLayer = 4
+attackTargets = Array[int]([16])
+defenseLayer = 32
+metadata/_custom_type_script = "uid://bn1xciy5bt0oy"

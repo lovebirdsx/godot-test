@@ -8,7 +8,8 @@ enum FactionType {
     PET = 1 << 2,
     PLAYER_HITBOX = 1 << 3,
     ENEMY_HITBOX = 1 << 4,
-    COLLECTABLE = 1 << 5,
+    PET_HITBOX = 1 << 5,
+    COLLECTABLE = 1 << 6,
 }
 
 @export var attackLayer: FactionType = FactionType.NONE

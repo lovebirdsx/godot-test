@@ -7,16 +7,18 @@
 [ext_resource type="Resource" uid="uid://f7mca2ixrbkr" path="res://config/stats/player.tres" id="3_sweqy"]
 [ext_resource type="Resource" uid="uid://cqew3odaayqjg" path="res://config/faction/player.tres" id="4_2hs0m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
-radius = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hs0m"]
+radius = 15.0
 
 [node name="Player" instance=ExtResource("1_8up3b")]
 script = ExtResource("2_sweqy")
 stats = ExtResource("3_sweqy")
 faction = ExtResource("4_2hs0m")
 
-[node name="HurtBox" parent="." index="0"]
-shape = SubResource("CircleShape2D_hqtel")
+[node name="RangeAttack" parent="AttackManager" index="0" node_paths=PackedStringArray("muzzle_node") instance=ExtResource("2_bebiu")]
+visible = false
+projectile_scene = ExtResource("3_kjynw")
+muzzle_node = NodePath("../../Muzzle")
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="1"]
 scale = Vector2(0.4, 0.4)
@@ -28,7 +30,7 @@ polygon = PackedVector2Array(13, -48, 25, -43, 36, -35, 43, -25, 48, -13, 50, 0,
 [node name="Muzzle" type="Node2D" parent="." index="3"]
 position = Vector2(15, 0)
 
-[node name="RangeAttack" parent="AttackManager" index="0" node_paths=PackedStringArray("muzzle_node") instance=ExtResource("2_bebiu")]
-visible = false
-projectile_scene = ExtResource("3_kjynw")
-muzzle_node = NodePath("../../Muzzle")
+[node name="HurtBox" parent="." index="4" groups=["player"]]
+
+[node name="PhysicsShape" parent="." index="5"]
+shape = SubResource("CircleShape2D_2hs0m")
