@@ -10,7 +10,7 @@ var owner_faction: Faction
 var start_position: Vector2
 
 func _ready() -> void:
-	area_entered.connect(_on_area_entered)
+	body_entered.connect(_on_body_entered)
 	start_position = global_position
 
 func _physics_process(delta: float) -> void:
@@ -18,9 +18,9 @@ func _physics_process(delta: float) -> void:
 	if global_position.distance_to(start_position) > fly_distance:
 		queue_free()
 
-func _on_area_entered(area: Area2D):
-	if area.owner and area.owner.has_method("take_damage"):
-		area.owner.take_damage(damage)
+func _on_body_entered(body: PhysicsBody2D):
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
 
 	queue_free()
 

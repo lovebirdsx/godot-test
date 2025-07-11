@@ -7,7 +7,6 @@ signal died
 @export var faction: Faction
 
 var current_health: float
-@onready var hurt_box: Area2D = $HurtBox
 
 func _ready():
 	if stats:
@@ -37,4 +36,4 @@ func die():
 	queue_free()
 
 func set_faction_collision():
-	hurt_box.collision_layer = faction.defenseLayer
+	collision_layer = faction.defenseLayer
