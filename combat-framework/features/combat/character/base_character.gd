@@ -19,6 +19,7 @@ func _ready():
 	attr_manager.get_attr(AttrDefine.AttrType.ContactDamageInterval).set_base_value(stats.contact_damage_interval)
 	current_health = attr_manager.get_attr(AttrDefine.AttrType.MaxHp).get_value()
 	collision_layer = stats.faction.defenseLayer
+	collision_mask = 0
 
 func take_damage(src_attr_manager: AttrManager) -> void:
 	if current_health <= 0:
@@ -42,3 +43,9 @@ func die():
 	print(name + " has died.")
 	died.emit()
 	queue_free()
+
+func fire_projectile(projectile_scene: PackedScene) -> void:
+	var projectile = projectile_scene.instantiate()
+	projectile.position = position
+	projectile.rotation = rotation
+	get_parent().add_child(projectile)

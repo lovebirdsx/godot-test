@@ -17,6 +17,5 @@ max_health = 100.0
 damage = 10.0
 defense = 5.0
 movement_speed = 200.0
-contact_damage = 10.0
 contact_damage_interval = 1.0
 metadata/_custom_type_script = "uid://dwqkkeb48yipy"

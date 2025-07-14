@@ -19,6 +19,7 @@ func _on_body_entered(body: Node2D):
 		if target_characters.size() == 1:
 			attack_timer.wait_time = source.stats.contact_damage_interval
 			attack_timer.start()
+			_on_attack_timer_timeout()
 
 func _on_body_exited(body: Node2D):
 	if body in target_characters:
