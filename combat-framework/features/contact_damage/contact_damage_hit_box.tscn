@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsjlrr3cgbru3"]
 
-[ext_resource type="Script" uid="uid://b2io2bjihp8sn" path="res://contact_damage_hit_box.gd" id="1_fq4hj"]
+[ext_resource type="Script" uid="uid://b2io2bjihp8sn" path="res://features/contact_damage/contact_damage_hit_box.gd" id="1_fq4hj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ci853"]
 radius = 20.0

@@ -1,24 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwjbanvrpbmw7"]
+[gd_scene load_steps=7 format=3 uid="uid://bwjbanvrpbmw7"]
 
-[ext_resource type="PackedScene" uid="uid://04l7qkembmj2" path="res://base_character.tscn" id="1_8up3b"]
+[ext_resource type="PackedScene" uid="uid://04l7qkembmj2" path="res://features/combat/character/base_character.tscn" id="1_8up3b"]
 [ext_resource type="PackedScene" uid="uid://cgthvqwwfqu3n" path="res://range_attack.tscn" id="2_bebiu"]
-[ext_resource type="Script" uid="uid://dugufk23ihwyf" path="res://player.gd" id="2_sweqy"]
+[ext_resource type="Script" uid="uid://dugufk23ihwyf" path="res://features/player/player.gd" id="2_sweqy"]
 [ext_resource type="PackedScene" uid="uid://s7pwc366x5y3" path="res://player_projectile.tscn" id="3_kjynw"]
 [ext_resource type="Resource" uid="uid://f7mca2ixrbkr" path="res://config/stats/player.tres" id="3_sweqy"]
-[ext_resource type="Resource" uid="uid://cqew3odaayqjg" path="res://config/faction/player.tres" id="4_2hs0m"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2hs0m"]
-radius = 15.0
+[ext_resource type="Script" uid="uid://5ctfmhjy5qki" path="res://features/combat/movement/player_movement.gd" id="7_7mbft"]
 
 [node name="Player" instance=ExtResource("1_8up3b")]
 script = ExtResource("2_sweqy")
 stats = ExtResource("3_sweqy")
-faction = ExtResource("4_2hs0m")
 
-[node name="RangeAttack" parent="AttackManager" index="0" node_paths=PackedStringArray("muzzle_node") instance=ExtResource("2_bebiu")]
+[node name="AttackManager#RangeAttack" parent="." index="0" instance=ExtResource("2_bebiu")]
 visible = false
 projectile_scene = ExtResource("3_kjynw")
-muzzle_node = NodePath("../../Muzzle")
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="1"]
 scale = Vector2(0.4, 0.4)
@@ -30,7 +25,5 @@ polygon = PackedVector2Array(13, -48, 25, -43, 36, -35, 43, -25, 48, -13, 50, 0,
 [node name="Muzzle" type="Node2D" parent="." index="3"]
 position = Vector2(15, 0)
 
-[node name="HurtBox" parent="." index="4" groups=["player"]]
-
-[node name="PhysicsShape" parent="." index="5"]
-shape = SubResource("CircleShape2D_2hs0m")
+[node name="Movement" parent="." index="7"]
+script = ExtResource("7_7mbft")

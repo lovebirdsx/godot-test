@@ -18,6 +18,11 @@ func remove_modifiers_by_source(source: Node) -> void:
 	modifiers = modifiers.filter(func(m): return m.source != source)
 	dirty = true
 
+func set_base_value(value: float) -> void:
+	if base_value != value:
+		base_value = value
+		dirty = true
+
 func get_value() -> float:
 	if not dirty:
 		return cached_value
