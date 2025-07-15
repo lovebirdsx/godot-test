@@ -1,5 +1,5 @@
-extends RefCounted
-class_name AttrModifier
+extends Resource
+class_name AttrModifierData
 
 enum ModifierType {
 	Flat,
@@ -7,6 +7,5 @@ enum ModifierType {
 }
 
 var attr_type: AttrDefine.AttrType
-var value: float
 var modifier_type: ModifierType
-var source: Node
+var value: float
