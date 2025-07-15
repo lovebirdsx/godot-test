@@ -1,29 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwjbanvrpbmw7"]
+[gd_scene load_steps=5 format=3 uid="uid://bwjbanvrpbmw7"]
 
 [ext_resource type="PackedScene" uid="uid://04l7qkembmj2" path="res://features/combat/character/base_character.tscn" id="1_8up3b"]
-[ext_resource type="PackedScene" uid="uid://cgthvqwwfqu3n" path="res://range_attack.tscn" id="2_bebiu"]
 [ext_resource type="Script" uid="uid://dugufk23ihwyf" path="res://features/player/player.gd" id="2_sweqy"]
-[ext_resource type="PackedScene" uid="uid://s7pwc366x5y3" path="res://player_projectile.tscn" id="3_kjynw"]
-[ext_resource type="Resource" uid="uid://f7mca2ixrbkr" path="res://config/stats/player.tres" id="3_sweqy"]
+[ext_resource type="Resource" uid="uid://f7mca2ixrbkr" path="res://config/player/player.tres" id="3_y2cyt"]
 [ext_resource type="Script" uid="uid://5ctfmhjy5qki" path="res://features/combat/movement/player_movement.gd" id="7_7mbft"]
 
 [node name="Player" instance=ExtResource("1_8up3b")]
 script = ExtResource("2_sweqy")
-stats = ExtResource("3_sweqy")
+data = ExtResource("3_y2cyt")
 
-[node name="AttackManager#RangeAttack" parent="." index="0" instance=ExtResource("2_bebiu")]
-visible = false
-projectile_scene = ExtResource("3_kjynw")
-
-[node name="Polygon2D" type="Polygon2D" parent="." index="1"]
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
 scale = Vector2(0.4, 0.4)
 color = Color(0.435294, 1, 1, 1)
 polygon = PackedVector2Array(13, -48, 25, -43, 36, -35, 43, -25, 48, -13, 50, 0, 48, 13, 43, 25, 36, 35, 25, 43, 13, 48, 1, 50, -13, 48, -25, 43, -36, 35, -43, 25, -48, 13, -50, 0, -48, -13, -43, -25, -35, -36, -25, -43, -13, -48, 0, -50)
 
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
 
-[node name="Muzzle" type="Node2D" parent="." index="3"]
+[node name="Muzzle" type="Node2D" parent="." index="2"]
 position = Vector2(15, 0)
 
-[node name="Movement" parent="." index="7"]
+[node name="Movement" parent="." index="6"]
 script = ExtResource("7_7mbft")
+
+[node name="FirePoint" type="Node2D" parent="." index="8"]
+position = Vector2(11, 0)

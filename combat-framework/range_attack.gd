@@ -7,5 +7,5 @@ func cast(_target: Node2D):
 	var projectile = projectile_scene.instantiate()
 	projectile.global_position = muzzle_node.global_position
 	projectile.global_rotation = muzzle_node.global_rotation
-	projectile.set_owner_and_damage(caster, caster.stats.damage)
+	projectile.set_owner_and_damage(caster, caster.data.damage)
 	get_tree().root.add_child(projectile)

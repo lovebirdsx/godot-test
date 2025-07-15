@@ -8,15 +8,18 @@ signal expired(context: CombatContext)
 @export var lifetime: float = 1000.0
 @onready var lifetime_timer: Timer = $LifetimeTimer
 
-var direction: Vector2 = Vector2.RIGHT
 var shooter: BaseCharacter
 var start_position: Vector2
 var combat_context: CombatContext = CombatContext.new()
+var direction: Vector2
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	start_position = global_position
+	direction = Vector2(cos(global_rotation), sin(global_rotation)).normalized()
+	lifetime_timer.wait_time = lifetime
 	lifetime_timer.timeout.connect(_on_lifetime_timeout)
+	lifetime_timer.start()
 
 func _on_lifetime_timeout() -> void:
 	expired.emit(combat_context)
@@ -30,9 +33,8 @@ func _on_body_entered(body: PhysicsBody2D):
 	hit.emit(combat_context)
 	queue_free()
 
-func set_owner_and_damage(caster: BaseCharacter, damage: Damage):
+func set_caster(caster: BaseCharacter):
 	combat_context.attacker = caster
 	combat_context.trigger = self
-	combat_context.damage = damage
-	collision_layer = caster.faction.attackLayer
-	collision_mask = caster.faction.get_attack_target_mask()
+	collision_layer = caster.data.faction.attackLayer
+	collision_mask = caster.data.faction.get_attack_target_mask()

@@ -1,11 +1,11 @@
 extends InstantAction
 class_name TakeDamageAction
 
-@export var damage: float = 10.0
+@export var damage: Damage
 
 func execute(context: CombatContext) -> void:
-	var taget = Target.get_target(context, target_type)
-	if taget.has_method("take_damage"):
-		taget.take_damage(damage)
+	var target = get_target(context)
+	if target.has_method("take_damage"):
+		target.take_damage(damage.get_value(context.attacker))
 	else:
 		push_error("Target does not have a take_damage method.")

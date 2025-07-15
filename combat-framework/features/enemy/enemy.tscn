@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://04l7qkembmj2" path="res://features/combat/character/base_character.tscn" id="1_epg4t"]
 [ext_resource type="Script" uid="uid://c7l13cy57qf0j" path="res://features/enemy/enemy.gd" id="2_4gyqm"]
-[ext_resource type="Resource" uid="uid://r8mgk451jf0r" path="res://config/stats/enemy.tres" id="3_3yqyl"]
+[ext_resource type="Resource" uid="uid://r8mgk451jf0r" path="res://config/enemy/enemy.tres" id="3_bbhh8"]
 [ext_resource type="Script" uid="uid://b2io2bjihp8sn" path="res://features/contact_damage/contact_damage_hit_box.gd" id="5_epg4t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ci853"]
@@ -13,7 +13,7 @@ radius = 19.0
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_epg4t")]
 script = ExtResource("2_4gyqm")
-stats = ExtResource("3_3yqyl")
+data = ExtResource("3_bbhh8")
 
 [node name="Polygon2D" type="Polygon2D" parent="." index="1"]
 scale = Vector2(0.4, 0.4)

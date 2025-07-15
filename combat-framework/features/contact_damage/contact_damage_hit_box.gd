@@ -9,7 +9,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
-	var faction = source.stats.faction
+	var faction = source.data.faction
 	collision_layer = faction.attackLayer
 	collision_mask = faction.get_attack_target_mask()
 
@@ -17,7 +17,7 @@ func _on_body_entered(body: Node2D):
 	if body not in target_characters and body is BaseCharacter:
 		target_characters.append(body)
 		if target_characters.size() == 1:
-			attack_timer.wait_time = source.stats.contact_damage_interval
+			attack_timer.wait_time = source.data.contact_damage_interval
 			attack_timer.start()
 			_on_attack_timer_timeout()
 
@@ -29,4 +29,4 @@ func _on_body_exited(body: Node2D):
 
 func _on_attack_timer_timeout() -> void:
 	for chr in target_characters:
-		chr.take_damage(source.attr_manager)
+		chr.take_damage(source.attr_manager.get_damage())
