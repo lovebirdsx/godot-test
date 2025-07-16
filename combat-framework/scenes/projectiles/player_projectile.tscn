@@ -1,14 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://s7pwc366x5y3"]
 
-[ext_resource type="PackedScene" uid="uid://dwq2cykvwypb4" path="res://base_projectile.tscn" id="1_73r22"]
+[ext_resource type="Script" uid="uid://bcfwl8jbtr1tf" path="res://scripts/projectiles/projectile.gd" id="1_s3mmp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vcal"]
 
-[node name="PlayerProjectile" instance=ExtResource("1_73r22")]
+[node name="PlayerProjectile" type="Area2D"]
+script = ExtResource("1_s3mmp")
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+[node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.105882, 1, 1, 1)
 polygon = PackedVector2Array(0, -10, 4, -9, 7, -7, 9, -4, 10, 0, 9, 4, 7, 7, 4, 9, 0, 10, -4, 9, -7, 7, -9, 4, -10, 0, -9, -4, -7, -7, -4, -9)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8vcal")
+
+[node name="LifetimeTimer" type="Timer" parent="."]
