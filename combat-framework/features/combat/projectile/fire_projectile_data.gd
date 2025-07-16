@@ -1,3 +1,5 @@
+@tool
+
 extends Resource
 class_name FireProjectileData
 
@@ -17,7 +19,7 @@ func _set_scene(value: PackedScene) -> void:
 	if value != null:
 		var instance = value.instantiate()
 		if not instance is Projectile:
-			print("Warning: Scene does not instantiate a Projectile.")
+			push_error("Warning: Scene is not a Projectile.")
 			instance.queue_free()
 			return
 		instance.queue_free()

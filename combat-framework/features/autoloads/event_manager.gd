@@ -15,7 +15,7 @@ func unsubscribe(event_type: GameEvents.Type, callable: Callable):
 		if _subscribers[event_type].size() == 0:
 			_subscribers.erase(event_type)
 
-func publish(event_type: String, payload: Dictionary):
+func publish(event_type: GameEvents.Type, payload: Dictionary):
 	if not _subscribers.has(event_type):
 		return
 	

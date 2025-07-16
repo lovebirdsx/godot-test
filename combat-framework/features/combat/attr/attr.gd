@@ -53,7 +53,7 @@ func get_value() -> float:
 			flat_sum += modifier.value
 		elif modifier.modifier_type == AttrModifierData.ModifierType.Percent:
 			percent_sum += modifier.value
-	var total_value: float = (base_value + flat_sum) * (1 + percent_sum)
+	var total_value: float = (base_value + flat_sum) * percent_sum
 	cached_value = total_value
 	dirty = false
 	return total_value

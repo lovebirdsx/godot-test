@@ -5,9 +5,10 @@ class_name Trigger
 @export var condition: BaseCondition = null
 @export var actions: Array[BaseAction] = []
 
-func excute(context: CombatContext) -> void:
+func excute(context: CombatContext) -> bool:
 	if condition != null and not condition.is_met(context):
-		return
+		return false
 
 	var runner = ActionsRunner.new(actions)
 	runner.run_actions(context)
+	return true

@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name BaseCharacter
 
 signal damage_taken(damage: float)
+signal healed(amount: float, current_hp: float)
 signal died
 
 @export var data: CharacterData
@@ -21,7 +22,7 @@ func _ready():
 	attr_manager.get_attr(AttrDefine.AttrType.Damage).set_base_value(data.damage)
 	attr_manager.get_attr(AttrDefine.AttrType.Defense).set_base_value(data.defense)
 	attr_manager.get_attr(AttrDefine.AttrType.ContactDamageInterval).set_base_value(data.contact_damage_interval)
-	current_health = attr_manager.get_attr(AttrDefine.AttrType.MaxHp).get_value()
+	current_health = attr_manager.get_max_hp()
 	collision_layer = data.faction.defenseLayer
 	collision_mask = 0
 
@@ -38,10 +39,24 @@ func take_damage(damage: float) -> void:
 
 	current_health -= real_damage
 	damage_taken.emit(real_damage)
+	EventManager.publish(GameEvents.Type.CharacterDamaged, {"character": self, "damage": real_damage})
 
 	print(name + " took " + str(real_damage) + " damage. Health is now " + str(current_health))
 	if current_health <= 0:
 		die()
+
+func heal(amount: float) -> void:
+	if amount <= 0 or current_health <= 0:
+		push_warning("Cannot heal " + name + " with amount: " + str(amount) + ". Current health: " + str(current_health))
+		return
+
+	current_health += amount
+	var max_hp = attr_manager.get_max_hp()
+	if current_health > max_hp:
+		current_health = max_hp
+
+	healed.emit(amount, current_health)
+	print(name + " healed " + str(amount) + ". Health is now " + str(current_health))
 
 func die():
 	print(name + " has died.")

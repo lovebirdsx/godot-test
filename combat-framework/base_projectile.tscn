@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwq2cykvwypb4"]
-
-[ext_resource type="Script" uid="uid://bcfwl8jbtr1tf" path="res://features/combat/projectile/projectile.gd" id="1_if21u"]
-
-[node name="BaseProjectile" type="Area2D"]
-script = ExtResource("1_if21u")
-
-[node name="LifetimeTimer" type="Timer" parent="."]

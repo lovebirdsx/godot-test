@@ -15,7 +15,7 @@ func _ready() -> void:
 			push_error("Invalid BuffData instance: %s" % buff_data)
 			continue
 		
-		add_buff(buff_data)
+		add_buff.call_deferred(buff_data)
 
 func add_buff(buff_data: BuffData) -> void:
 	if not is_instance_valid(character):

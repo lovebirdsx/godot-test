@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=7 format=3 uid="uid://cvwenwpxc31rb"]
+
+[ext_resource type="Script" uid="uid://cisouwba8vuyc" path="res://features/combat/skill/skill_data.gd" id="1_uv8uj"]
+[ext_resource type="Script" uid="uid://cigy8kjmp1nep" path="res://features/combat/buff/buff_data.gd" id="2_fn0b8"]
+[ext_resource type="Resource" uid="uid://c08f5gjai5nfa" path="res://configs/buffs/recover_when_hp_low.tres" id="3_fn0b8"]
+[ext_resource type="Script" uid="uid://bn1xciy5bt0oy" path="res://features/combat/faction.gd" id="3_pawp0"]
+[ext_resource type="Script" uid="uid://dwqkkeb48yipy" path="res://features/combat/character/character_data.gd" id="4_orxop"]
+
+[sub_resource type="Resource" id="Resource_2nfpc"]
+script = ExtResource("3_pawp0")
+attackLayer = 8
+attackTargets = Array[int]([1])
+defenseLayer = 2
+metadata/_custom_type_script = "uid://bn1xciy5bt0oy"
+
+[resource]
+script = ExtResource("4_orxop")
+faction = SubResource("Resource_2nfpc")
+max_hp = 100.0
+damage = 10.0
+defense = 0.0
+movement_speed = 200.0
+contact_damage_interval = 1.0
+skills = Array[ExtResource("1_uv8uj")]([])
+auto_cast_skills = Array[ExtResource("1_uv8uj")]([])
+buffs = Array[ExtResource("2_fn0b8")]([ExtResource("3_fn0b8")])
+metadata/_custom_type_script = "uid://dwqkkeb48yipy"

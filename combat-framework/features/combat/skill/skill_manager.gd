@@ -1,5 +1,4 @@
 extends Node
-
 class_name SkillManager
 
 @onready var character: BaseCharacter = get_parent()

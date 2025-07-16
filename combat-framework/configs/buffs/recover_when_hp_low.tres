@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="BuffData" load_steps=12 format=3 uid="uid://c08f5gjai5nfa"]
+
+[ext_resource type="Script" uid="uid://dxk2lka1jbvha" path="res://features/combat/action/base/base_action.gd" id="1_e6x2b"]
+[ext_resource type="Script" uid="uid://cxyxuv6igkk0h" path="res://features/combat/attr/attr_modifier_data.gd" id="2_m6dpk"]
+[ext_resource type="Script" uid="uid://cigy8kjmp1nep" path="res://features/combat/buff/buff_data.gd" id="3_rnhn5"]
+[ext_resource type="Script" uid="uid://b6ui06rynjos2" path="res://features/combat/trigger/trigger.gd" id="4_p3itr"]
+[ext_resource type="Script" uid="uid://82gt1vnf768f" path="res://features/combat/damage.gd" id="5_p3itr"]
+[ext_resource type="Script" uid="uid://bo6bsrmw0rhnd" path="res://features/combat/action/actions/heal_action.gd" id="6_0uak1"]
+[ext_resource type="Script" uid="uid://cmtwi2bsj3vwt" path="res://features/combat/condition/conditions/health_condition.gd" id="7_4jccy"]
+
+[sub_resource type="Resource" id="Resource_c5ioy"]
+script = ExtResource("5_p3itr")
+type = 0
+source = 0
+value_or_rate = 100.0
+metadata/_custom_type_script = "uid://82gt1vnf768f"
+
+[sub_resource type="Resource" id="Resource_t0ket"]
+script = ExtResource("6_0uak1")
+amount = SubResource("Resource_c5ioy")
+target_type = 1
+metadata/_custom_type_script = "uid://bo6bsrmw0rhnd"
+
+[sub_resource type="Resource" id="Resource_gy7vu"]
+script = ExtResource("7_4jccy")
+target = 1
+operator = 0
+percentage = 0.5
+metadata/_custom_type_script = "uid://cmtwi2bsj3vwt"
+
+[sub_resource type="Resource" id="Resource_e6x2b"]
+script = ExtResource("4_p3itr")
+event_type = 3
+condition = SubResource("Resource_gy7vu")
+actions = Array[ExtResource("1_e6x2b")]([SubResource("Resource_t0ket")])
+metadata/_custom_type_script = "uid://b6ui06rynjos2"
+
+[resource]
+script = ExtResource("3_rnhn5")
+name = "Recover 50% Hp when hp < 20%"
+duration = 0.0
+overlap_type = 0
+max_stacks = 1
+modifiers = Dictionary[int, ExtResource("2_m6dpk")]({})
+on_add_actions = Array[ExtResource("1_e6x2b")]([])
+on_remove_actions = Array[ExtResource("1_e6x2b")]([])
+triggers = Array[ExtResource("4_p3itr")]([SubResource("Resource_e6x2b")])
+max_trigger_count = 2
+interval = 0.0
+interval_actions = Array[ExtResource("1_e6x2b")]([])
+metadata/_custom_type_script = "uid://cigy8kjmp1nep"
