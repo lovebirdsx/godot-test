@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventManager="*res://features/autoloads/event_manager.gd"
+EventManager="*res://scripts/autoloads/event_manager.gd"
 
 [editor_plugins]
 

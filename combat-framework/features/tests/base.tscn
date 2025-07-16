@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv3lp8g6bwy8m"]
-
-[ext_resource type="Script" uid="uid://gpve4gjr6nda" path="res://features/tests/base.gd" id="1_f06aw"]
-
-[node name="Base" type="Node2D"]
-script = ExtResource("1_f06aw")
-base_value = 15
