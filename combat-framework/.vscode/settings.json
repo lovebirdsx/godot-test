@@ -1,6 +1,14 @@
 {
 	"editor.insertSpaces": false,
 	"editor.tabSize": 4,
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/*.uid": true,
+	},
 	"search.exclude": {
 		"**/.efficiency": true,
 	},
