@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://04l7qkembmj2" path="res://features/combat/character/base_character.tscn" id="1_qae7j"]
 [ext_resource type="Script" uid="uid://dxs1vabhxt5vj" path="res://pet.gd" id="2_j8hq5"]
-[ext_resource type="Resource" uid="uid://bl51c7vnhqdrk" path="res://config/pet/pet.tres" id="3_5bqq7"]
+[ext_resource type="Resource" uid="uid://bl51c7vnhqdrk" path="res://configs/pets/pet.tres" id="3_5bqq7"]
 [ext_resource type="Script" uid="uid://b2io2bjihp8sn" path="res://features/contact_damage/contact_damage_hit_box.gd" id="3_s0gbd"]
-[ext_resource type="Resource" uid="uid://cr4bgceku8bxf" path="res://config/faction/pet.tres" id="4_qae7j"]
+[ext_resource type="Resource" path="res://config/faction/pet.tres" id="4_qae7j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j8hq5"]
 radius = 20.0

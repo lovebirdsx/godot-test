@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="SkillData" load_steps=14 format=3 uid="uid://qokiskp0vvtb"]
 
-[ext_resource type="Script" uid="uid://dxk2lka1jbvha" path="res://features/combat/actions/base_action.gd" id="1_kqba4"]
-[ext_resource type="Script" uid="uid://cisouwba8vuyc" path="res://features/combat/skills/skill_data.gd" id="2_aqmv4"]
-[ext_resource type="PackedScene" uid="uid://s7pwc366x5y3" path="res://features/projectile/player_projectile.tscn" id="2_ktevf"]
+[ext_resource type="Script" uid="uid://dxk2lka1jbvha" path="res://features/combat/action/base_action.gd" id="1_kqba4"]
+[ext_resource type="Script" uid="uid://cisouwba8vuyc" path="res://features/combat/skill/skill_data.gd" id="2_aqmv4"]
+[ext_resource type="PackedScene" uid="uid://s7pwc366x5y3" path="res://features/projectiles/player_projectile.tscn" id="2_ktevf"]
 [ext_resource type="Script" uid="uid://tbky7y1uv0pg" path="res://features/combat/projectile/fire_projectile_data.gd" id="3_40spi"]
 [ext_resource type="Script" uid="uid://bsuql3cbvn8tl" path="res://features/combat/target.gd" id="3_aqmv4"]
 [ext_resource type="Script" uid="uid://kcewe0jeey74" path="res://features/actions/take_damage_action.gd" id="4_40spi"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://r8mgk451jf0r"]
 
-[ext_resource type="Script" uid="uid://cisouwba8vuyc" path="res://features/combat/skills/skill_data.gd" id="1_4qm8i"]
+[ext_resource type="Script" uid="uid://cisouwba8vuyc" path="res://features/combat/skill/skill_data.gd" id="1_4qm8i"]
 [ext_resource type="Script" uid="uid://bn1xciy5bt0oy" path="res://faction.gd" id="1_lwypf"]
 [ext_resource type="Script" uid="uid://dwqkkeb48yipy" path="res://features/combat/character/character_data.gd" id="1_owoke"]
 

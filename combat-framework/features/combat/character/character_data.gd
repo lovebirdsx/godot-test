@@ -12,3 +12,5 @@ class_name CharacterData
 @export var contact_damage_interval: float = 1.0
 @export var skills: Array[SkillData] = []
 @export var auto_cast_skills: Array[SkillData] = []
+
+@export var buffs: Array[BuffData] = []

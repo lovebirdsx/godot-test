@@ -15,6 +15,10 @@ run/main_scene="uid://cwlo1t0qhhnnd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventManager="*res://features/autoloads/event_manager.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")

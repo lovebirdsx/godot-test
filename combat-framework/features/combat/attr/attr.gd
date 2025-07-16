@@ -14,7 +14,7 @@ var modifiers: Array[Modifier] = []
 var dirty: bool = false
 var cached_value: float = 0.0
 
-func add_modifier(modifier: AttrModifierData, source: Node) -> void:
+func add_modifier(modifier: AttrModifierData, source: Object) -> void:
 	modifiers.append(Modifier.new(source, modifier))
 	dirty = true
 
@@ -24,9 +24,18 @@ func remove_modifier(modifier: AttrModifierData) -> void:
 		modifiers.remove_at(index)
 		dirty = true
 
-func remove_modifiers_by_source(source: Node) -> void:
-	modifiers = modifiers.filter(func(m): return m.source != source)
-	dirty = true
+func remove_modifiers_by_source(source_to_remove: Object) -> void:
+	var new_modifiers: Array[Modifier] = []
+	var changed = false
+	for m in modifiers:
+		if m.source != source_to_remove:
+			new_modifiers.append(m)
+		else:
+			changed = true
+	
+	if changed:
+		modifiers = new_modifiers
+		dirty = true
 
 func set_base_value(value: float) -> void:
 	if base_value != value:
