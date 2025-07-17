@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cisouwba8vuyc" path="res://scripts/core/combat/skill/skill_data.gd" id="1_00l2v"]
 [ext_resource type="Script" uid="uid://cigy8kjmp1nep" path="res://scripts/core/combat/buff/buff_data.gd" id="2_y2spn"]
-[ext_resource type="Resource" uid="uid://c08f5gjai5nfa" path="res://resources/buffs/recover_when_hp_low.tres" id="3_fn0b8"]
+[ext_resource type="Resource" uid="uid://c08f5gjai5nfa" path="res://resources/buffs/emergency_heal.tres" id="3_fn0b8"]
 [ext_resource type="Script" uid="uid://bn1xciy5bt0oy" path="res://scripts/core/combat/faction.gd" id="4_51t17"]
 [ext_resource type="Script" uid="uid://dwqkkeb48yipy" path="res://scripts/characters/common/character_data.gd" id="5_x2hdp"]
 

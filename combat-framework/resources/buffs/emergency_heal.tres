@@ -37,7 +37,8 @@ metadata/_custom_type_script = "uid://b6ui06rynjos2"
 
 [resource]
 script = ExtResource("3_nt2nl")
-name = "Recover 50% Hp when hp < 20%"
+name = "Emergency Heal"
+description = "This buff will recover 100 HP when HP is below 20%."
 duration = 0.0
 overlap_type = 0
 max_stacks = 1

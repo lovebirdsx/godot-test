@@ -10,7 +10,8 @@ enum OverlapType {
 	Ignore
 }
 
-@export var name: String = "Base Buff"
+@export var name: String = "Buff Name"
+@export var description: String = "Buff Description"
 @export var icon: Texture2D = null
 
 ## If duration is greater than 0, the buff will be removed after this duration.
