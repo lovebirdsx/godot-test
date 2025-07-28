@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cydgw5ie3xg2x"]
+
+[ext_resource type="Shader" uid="uid://bythwl354p2kp" path="res://hello/hello.gdshader" id="1_50bgh"]
+
+[resource]
+shader = ExtResource("1_50bgh")
+shader_parameter/base_color = Vector4(0.2, 0, 0.4, 1)
+shader_parameter/scroll_speed = 1.0
+shader_parameter/noise_scale = 5.0

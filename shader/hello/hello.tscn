@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ytfx52ph5fc"]
+
+[ext_resource type="Material" uid="uid://cydgw5ie3xg2x" path="res://hello/hello.tres" id="1_mgqed"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("1_mgqed")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
