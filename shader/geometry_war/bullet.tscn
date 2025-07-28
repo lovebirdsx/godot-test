@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb8c3hnkpfqna"]
+
+[ext_resource type="Script" uid="uid://cnpo63aet7w5d" path="res://geometry_war/bullet.gd" id="1_hle4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hle4e"]
+size = Vector2(20, 10)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_hle4e")
+speed = 400.0
+fly_range = 400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hle4e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 5.0
+color = Color(0.376471, 0.898039, 1, 1)

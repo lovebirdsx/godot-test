@@ -1,23 +1,32 @@
-extends Sprite2D
+extends Node2D
 
 @export var speed: float = 300
+@export var rotation_speed: float = 20
 
-@onready var background_material: ShaderMaterial = $"../Background".material
+@onready var shockwave_manager: ShockwaveManager = get_node("/root/GeometryWar/ShockwaveManager")
+var bullet_scene = preload("res://geometry_war/bullet.tscn")
 
-var shockwave_intensity: float = 0.0
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fire"):
+		var bullet_instance = bullet_scene.instantiate()
+		bullet_instance.global_position = global_position
+		bullet_instance.direction = Vector2.RIGHT.rotated(rotation) 
+		get_parent().add_child(bullet_instance)
 
 func _process(delta: float) -> void:
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	position += direction * speed * delta
-
-	if background_material:
-		var viewport_size = get_viewport_rect().size
-		var player_uv = global_position / viewport_size
-		background_material.set_shader_parameter("shockwave_center", player_uv)
-
-	if direction.length() > 0:
-		shockwave_intensity = move_toward(shockwave_intensity, 1.0, delta * 2.0)
-	else:
-		shockwave_intensity = move_toward(shockwave_intensity, 0.0, delta * 2.0)
-
-	background_material.set_shader_parameter("shockwave_intensity", shockwave_intensity)
+	var move_dir := Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
+	position += move_dir.normalized() * speed * delta
+	
+	if move_dir.length() > 0.1:
+		var target_angle: float = move_dir.angle()
+		var current_angle: float = rotation
+		rotation = lerp_angle(current_angle, target_angle, rotation_speed * delta)
+	
+	var target_intensity = 1.0 if move_dir.length() > 0 else 0.0
+	shockwave_manager.update_or_create_player_shockwave(
+		get_instance_id(),
+		global_position,
+		target_intensity,
+		move_dir,
+		delta
+	)
