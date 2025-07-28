@@ -38,7 +38,7 @@ void fragment() {
 		// 计算基础的径向衰减
 		float falloff = 1.0 - smoothstep(0.0, shockwave_radius, dist_to_center);
 		float wave_intensity = intensity * falloff;
-		
+
 		vec2 final_direction = dir_from_center;
 		float wave = 0.0;
 
@@ -63,7 +63,7 @@ void fragment() {
 			float phase_shift = dot_product * 2.5;
 			wave = sin(dist_to_center * 25.0 - TIME * 5.0 - phase_shift) * wave_intensity;
 		}
-		
+
 		total_offset += final_direction * wave * distortion_strength;
 		total_glow += wave_intensity;
 	}
@@ -74,6 +74,6 @@ void fragment() {
 
 	// 添加辉光效果
 	// final_color += grid_color.rgb * total_glow * 0.7;
-	
+
 	COLOR = vec4(final_color, 1.0);
 }

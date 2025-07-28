@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3lydsidl1fnx"]
+
+[ext_resource type="Material" uid="uid://djljkpmkgg5ex" path="res://glow/glow_standard_material_3d.tres" id="2_1xr2n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ftym"]
+
+[node name="Glow3d" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0112004, -0.170443, -0.0379734)
+material_override = ExtResource("2_1xr2n")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.891117, 0.453773, 0, -0.453773, 0.891117, -0.247329, 1.00061, 2.16835)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.494939, 0, 0, 0, 1, 0, -1.13966, 0)
+size = Vector3(100, 0.1, 100)
+material = SubResource("StandardMaterial3D_7ftym")
