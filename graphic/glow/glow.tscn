@@ -1,0 +1,135 @@
+[gd_scene load_steps=5 format=3 uid="uid://1ww5v5u7oejt"]
+
+[ext_resource type="Environment" uid="uid://csm1p71bdobx4" path="res://glow/glow_environment.tres" id="1_tn7n6"]
+[ext_resource type="Texture2D" uid="uid://5mwpfnhnycd0" path="res://icon.svg" id="3_8avwa"]
+[ext_resource type="SystemFont" uid="uid://c16eammjxr8tc" path="res://glow/glow_system_font.tres" id="3_rh5xh"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rh5xh"]
+
+[node name="Glow" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_tn7n6")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 1153.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.369, 0.400433, 0.41, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_rh5xh")
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 360.0
+offset_bottom = 232.0
+color = Color(2, 2, 2, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_rh5xh")
+offset_left = 320.0
+offset_top = 256.0
+offset_right = 360.0
+offset_bottom = 296.0
+color = Color(3, 3, 3, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_rh5xh")
+offset_left = 320.0
+offset_top = 128.0
+offset_right = 360.0
+offset_bottom = 168.0
+color = Color(0.9, 0.9, 0.9, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_rh5xh")
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 360.0
+offset_bottom = 104.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(2, 2, 2, 1)
+top_level = true
+material = SubResource("CanvasItemMaterial_rh5xh")
+position = Vector2(832, 128)
+texture = ExtResource("3_8avwa")
+
+[node name="LabelM08" type="Label" parent="."]
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 267.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("3_rh5xh")
+theme_override_font_sizes/font_size = 32
+text = "Modulate 0.8"
+
+[node name="LabelM1" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 267.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("3_rh5xh")
+theme_override_font_sizes/font_size = 32
+text = "Modulate 1.0"
+
+[node name="LabelM2" type="Label" parent="."]
+self_modulate = Color(2, 2, 2, 1)
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 267.0
+offset_bottom = 241.0
+theme_override_fonts/font = ExtResource("3_rh5xh")
+theme_override_font_sizes/font_size = 32
+text = "Modulate 2.0"
+
+[node name="LabelM3" type="Label" parent="."]
+self_modulate = Color(3, 3, 3, 1)
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 267.0
+offset_bottom = 305.0
+theme_override_fonts/font = ExtResource("3_rh5xh")
+theme_override_font_sizes/font_size = 32
+text = "Modulate 3.0"
+
+[node name="LabelM4" type="Label" parent="."]
+self_modulate = Color(4, 4, 4, 1)
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 267.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("3_rh5xh")
+theme_override_font_sizes/font_size = 32
+text = "Modulate 4.0"
+
+[node name="LabelM5" type="Label" parent="."]
+self_modulate = Color(5, 5, 5, 1)
+offset_left = 64.0
+offset_top = 384.0
+offset_right = 267.0
+offset_bottom = 433.0
+theme_override_fonts/font = ExtResource("3_rh5xh")
+theme_override_font_sizes/font_size = 32
+text = "Modulate 5.0"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="LabelM6" type="Label" parent="UI"]
+self_modulate = Color(4, 4, 4, 1)
+offset_left = 448.0
+offset_top = 64.0
+offset_right = 650.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("3_rh5xh")
+theme_override_font_sizes/font_size = 32
+text = "Text On UI"

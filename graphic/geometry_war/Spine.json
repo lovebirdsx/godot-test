@@ -1,0 +1,28 @@
+{"skeleton":{"images":""},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"green_triangle","bone":"root","attachment":"green_triangle"},
+	{"name":"blue_triangle","bone":"root","attachment":"blue_triangle"},
+	{"name":"red_triangle","bone":"root","attachment":"red_triangle"},
+	{"name":"green_triangle_lighting","bone":"root","attachment":"green_triangle_lighting"},
+	{"name":"red_triangle_lighting","bone":"root","attachment":"red_triangle_lighting"},
+	{"name":"blue_triangle_lighting","bone":"root","attachment":"blue_triangle_lighting"},
+	{"name":"red_triangle_exposure","bone":"root","attachment":"red_triangle_exposure"},
+	{"name":"green_triangle_exposure","bone":"root","attachment":"green_triangle_exposure"},
+	{"name":"blue_triangle_exposure","bone":"root","attachment":"blue_triangle_exposure"}
+],
+"skins":{
+	"default":{
+		"green_triangle":{"green_triangle":{"x":,"y":,"width":,"height":}},
+		"blue_triangle":{"blue_triangle":{"x":,"y":,"width":,"height":}},
+		"red_triangle":{"red_triangle":{"x":,"y":,"width":,"height":}},
+		"green_triangle_lighting":{"green_triangle_lighting":{"x":,"y":,"width":,"height":}},
+		"red_triangle_lighting":{"red_triangle_lighting":{"x":,"y":,"width":,"height":}},
+		"blue_triangle_lighting":{"blue_triangle_lighting":{"x":,"y":,"width":,"height":}},
+		"red_triangle_exposure":{"red_triangle_exposure":{"x":,"y":,"width":,"height":}},
+		"green_triangle_exposure":{"green_triangle_exposure":{"x":,"y":,"width":,"height":}},
+		"blue_triangle_exposure":{"blue_triangle_exposure":{"x":,"y":,"width":,"height":}}
+	}
+},
+"animations":{"animation":{}}
+}

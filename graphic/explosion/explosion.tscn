@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://drswvbi6w6rvj"]
+
+[ext_resource type="Script" uid="uid://vyw565jemo5f" path="res://explosion/explosion.gd" id="1_tic5l"]
+[ext_resource type="Texture2D" uid="uid://5oxsmcw1s25a" path="res://explosion/white_box.png" id="2_ran55"]
+[ext_resource type="Texture2D" uid="uid://ccyyp61fefmvo" path="res://explosion/white_circle.png" id="4_6c071"]
+
+[sub_resource type="Gradient" id="Gradient_d0cwp"]
+offsets = PackedFloat32Array(0, 0.104738, 0.733167, 1)
+colors = PackedColorArray(0.665957, 0.495339, 0.888741, 1, 1, 1, 1, 1, 0.541176, 0.352941, 0.698039, 1, 0.635294, 0.47451, 0.831373, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2utuo"]
+gradient = SubResource("Gradient_d0cwp")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_bgt1o"]
+_data = [Vector2(0, 0.000844598), 0.0, 0.0, 0, 0, Vector2(0.18267, 1), 0.0, 0.0, 0, 0, Vector2(0.496487, 0.762054), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bdig0"]
+curve = SubResource("Curve_bgt1o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndr5a"]
+emission_shape = 1
+emission_sphere_radius = 5.95
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 400.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -73.34
+damping_min = 305.377
+damping_max = 305.377
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_bdig0")
+color_ramp = SubResource("GradientTexture1D_2utuo")
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_tic5l")
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 128
+texture = ExtResource("2_ran55")
+lifetime = 0.56
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(-400, -400, 800, 800)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ndr5a")
+
+[node name="Shockwave" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_6c071")
+
+[node name="Flash" type="PointLight2D" parent="."]
+enabled = false
+energy = 5.0
+texture = ExtResource("4_6c071")
+
+[node name="Lifetime" type="Timer" parent="."]
