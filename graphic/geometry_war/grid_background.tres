@@ -15,5 +15,5 @@ shader_parameter/shockwave_directions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 
 shader_parameter/shockwave_colors = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/shockwave_radii = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/active_shockwaves = 0
-shader_parameter/distortion_strength = 0.02
-shader_parameter/directional_influence = 0.5
+shader_parameter/distortion_strength = 0.01
+shader_parameter/directional_influence = 0.3

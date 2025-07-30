@@ -2,6 +2,7 @@ extends Node2D
 
 @export var speed: float = 300
 @export var rotation_speed: float = 20
+@export var shockwave_radius: float = 0.3
 
 @onready var shockwave_manager: ShockwaveManager = get_node("/root/GeometryWar/ShockwaveManager")
 var bullet_scene = preload("res://geometry_war/bullet.tscn")
@@ -29,6 +30,6 @@ func _process(delta: float) -> void:
 		target_intensity,
 		move_dir,
 		delta,
-		Vector3(0.9, 0.9, 0.9),
-		0.3
+		Vector3(0.2, 0.2, 0.2),
+		shockwave_radius
 	)

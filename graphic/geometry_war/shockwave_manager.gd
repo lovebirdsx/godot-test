@@ -91,8 +91,8 @@ func update_or_create_player_shockwave(id: int, pos: Vector2, target_intensity: 
                 "position": uv_pos,
                 "intensity": 0.0,
                 "direction": move_direction.normalized(),
-                "color": color,  # 新增
-                "radius": radius # 新增
+                "color": color,
+                "radius": radius
             }
             shockwaves.append(new_shockwave)
             found_wave = new_shockwave
@@ -106,8 +106,8 @@ func update_or_create_player_shockwave(id: int, pos: Vector2, target_intensity: 
         if move_direction.length() > 0.01:
             found_wave.direction = move_direction.normalized()
         found_wave.intensity = move_toward(found_wave.intensity, target_intensity, 2.0 * delta)
-        found_wave.color = color   # 更新颜色（如果需要动态变化）
-        found_wave.radius = radius # 更新范围
+        found_wave.color = color
+        found_wave.radius = radius
 
 # 将世界位置转换为背景UV（动态处理偏移和大小）
 func _world_to_background_uv(world_pos: Vector2) -> Vector2:

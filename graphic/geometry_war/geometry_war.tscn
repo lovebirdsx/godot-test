@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bfb4kite27501" path="res://explosion/player.exr" id="3_lkd38"]
 [ext_resource type="Script" uid="uid://c7v66ek3v5ds5" path="res://geometry_war/player.gd" id="3_t02iy"]
 [ext_resource type="Script" uid="uid://dxrg7yfcv4nlo" path="res://geometry_war/shockwave_manager.gd" id="4_c3gmf"]
-[ext_resource type="Environment" uid="uid://bmj3gn8f3goxy" path="res://geometry_war/geometry_war_environment.tres" id="5_kl3y0"]
+[ext_resource type="Environment" uid="uid://cag2ufklu3eqf" path="res://geometry_war/exr_test_environment.tres" id="5_lkd38"]
 [ext_resource type="Texture2D" uid="uid://d0jwogshaufq1" path="res://geometry_war/blue_triangle_exposure.exr" id="7_kl3y0"]
 [ext_resource type="Texture2D" uid="uid://bxiiagywakfv4" path="res://geometry_war/green_triangle_exposure.exr" id="10_05ujx"]
 [ext_resource type="Texture2D" uid="uid://b5gc17frgs3cb" path="res://geometry_war/red_triangle_exposure.exr" id="13_lxhfo"]
@@ -21,6 +21,7 @@ offset_bottom = 1205.0
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(525, 324)
 script = ExtResource("3_t02iy")
+shockwave_radius = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 rotation = 1.5708
@@ -32,7 +33,7 @@ texture = ExtResource("3_lkd38")
 script = ExtResource("4_c3gmf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("5_kl3y0")
+environment = ExtResource("5_lkd38")
 
 [node name="BlueTriangleExposure" type="Sprite2D" parent="."]
 position = Vector2(249, 259)

@@ -73,12 +73,15 @@ void fragment() {
     float big_grid_value = grid(distorted_uv, big_grid_thickness, big_grid_density);
     float combined_grid_value = max(small_grid_value, big_grid_value * 1.5);
 
-    // 最终颜色：默认暗网格 + 照明高亮（tint 和 增加亮度）
+    // 基础颜色：仅在网格线上
     vec3 base_color = combined_grid_value * grid_color.rgb;
-    vec3 final_color = base_color + (base_color + vec3(0.5)) * total_lighting; // tint 并高亮
 
-    // 添加辉光：基于total_glow增加emission-like效果（WorldEnvironment会glow它）
-    final_color += grid_color.rgb * total_glow * 1.5; // 增强辉光
+    // 最终颜色：仅在网格线上应用照明（additive方式，以保持网格线亮度并添加颜色tint）
+    // 这会使照明仅影响网格线区域，off-line保持黑色
+    vec3 final_color = base_color + combined_grid_value * total_lighting;
+
+    // 添加辉光：仅在网格线上基于total_glow增加emission-like效果（WorldEnvironment会glow它）
+    final_color += combined_grid_value * grid_color.rgb * total_glow * 1.5;
 
     COLOR = vec4(final_color, 1.0);
 }

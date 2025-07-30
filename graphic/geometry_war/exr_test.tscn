@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c7v66ek3v5ds5" path="res://geometry_war/player.gd" id="2_2pyem"]
 [ext_resource type="Texture2D" uid="uid://5mwpfnhnycd0" path="res://icon.svg" id="3_fneqp"]
 [ext_resource type="Script" uid="uid://dxrg7yfcv4nlo" path="res://geometry_war/shockwave_manager.gd" id="4_csbwv"]
-[ext_resource type="Environment" uid="uid://bmj3gn8f3goxy" path="res://geometry_war/geometry_war_environment.tres" id="5_is1pv"]
+[ext_resource type="Environment" uid="uid://cag2ufklu3eqf" path="res://geometry_war/exr_test_environment.tres" id="5_st61t"]
 [ext_resource type="Texture2D" uid="uid://c5tu2i6n5yceh" path="res://geometry_war/blue_triangle.exr" id="6_h877h"]
 [ext_resource type="Texture2D" uid="uid://d0jwogshaufq1" path="res://geometry_war/blue_triangle_exposure.exr" id="7_cyoi7"]
 [ext_resource type="Texture2D" uid="uid://cv77hrpshbq2s" path="res://geometry_war/blue_triangle_lighting.exr" id="8_kcd4i"]
@@ -37,7 +37,7 @@ texture = ExtResource("3_fneqp")
 script = ExtResource("4_csbwv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("5_is1pv")
+environment = ExtResource("5_st61t")
 
 [node name="BlueTriangle" type="Sprite2D" parent="."]
 self_modulate = Color(4, 4, 4, 1)
