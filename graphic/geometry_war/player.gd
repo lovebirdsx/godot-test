@@ -31,12 +31,12 @@ func _process(delta: float) -> void:
 		var current_angle: float = rotation
 		rotation = lerp_angle(current_angle, target_angle, rotation_speed * delta)
 	
-	var target_intensity = 1.0 if move_dir.length() > 0 else 0.0
+	var target_intensity = 0.5 if move_dir.length() > 0 else 0.0
 	shockwave_manager.update_or_create_player_shockwave(
 		get_instance_id(),
 		global_position,
 		target_intensity,
-		move_dir,
+		Vector2.ZERO,
 		delta,
 		Vector3(shockwave_color.r, shockwave_color.g, shockwave_color.b),
 		shockwave_radius,

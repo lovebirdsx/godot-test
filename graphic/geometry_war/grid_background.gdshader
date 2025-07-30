@@ -8,7 +8,7 @@ uniform float big_grid_thickness = 0.03;
 uniform float big_grid_density = 16.0;
 
 // 波纹设置
-const int MAX_SHOCKWAVES = 10;
+const int MAX_SHOCKWAVES = 20;
 uniform vec2 shockwave_centers[MAX_SHOCKWAVES];
 uniform float shockwave_intensities[MAX_SHOCKWAVES];
 uniform vec2 shockwave_directions[MAX_SHOCKWAVES];
