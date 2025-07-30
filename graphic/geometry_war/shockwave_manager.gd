@@ -23,6 +23,8 @@ func _process(delta: float) -> void:
     var centers = []
     var intensities = []
     var directions = []
+    var colors = []
+    var radii = []
     
     var i = 0
     while i < shockwaves.size():
@@ -38,6 +40,8 @@ func _process(delta: float) -> void:
             centers.push_back(sw.position)
             intensities.push_back(sw.intensity)
             directions.push_back(sw.direction)
+            colors.push_back(sw.color)
+            radii.push_back(sw.radius)
             i += 1
     
     if not centers.is_empty():
@@ -45,28 +49,32 @@ func _process(delta: float) -> void:
         background_material.set_shader_parameter("shockwave_centers", centers)
         background_material.set_shader_parameter("shockwave_intensities", intensities)
         background_material.set_shader_parameter("shockwave_directions", directions)
+        background_material.set_shader_parameter("shockwave_colors", colors)
+        background_material.set_shader_parameter("shockwave_radii", radii)
     else:
         background_material.set_shader_parameter("active_shockwaves", 0)
 
 # 公共接口：用于在指定位置创建一个波纹（用于炮弹等瞬时效果）
-func create_shockwave(pos: Vector2, initial_intensity: float, move_direction: Vector2 = Vector2.ZERO, fade_rate: float = 2.0):
+func create_shockwave(pos: Vector2, initial_intensity: float, move_direction: Vector2 = Vector2.ZERO, fade_rate: float = 2.0, color: Vector3 = Vector3(1.0, 0.0, 0.0), radius: float = 0.15):
     if shockwaves.size() >= MAX_SHOCKWAVES:
         return
 
-    var uv_pos = _world_to_background_uv(pos)  # 修改：使用新方法转换UV
-    if uv_pos == Vector2(-1, -1):  # 如果超出边界，返回
+    var uv_pos = _world_to_background_uv(pos)
+    if uv_pos == Vector2(-1, -1):
         return
 
     var new_shockwave = {
         "position": uv_pos,
         "intensity": initial_intensity,
         "direction": move_direction.normalized(),
-        "fade_rate": fade_rate
+        "fade_rate": fade_rate,
+        "color": color,  # 新增
+        "radius": radius # 新增
     }
     shockwaves.append(new_shockwave)
 
 # 用于玩家移动时持续更新的特殊波纹
-func update_or_create_player_shockwave(id: int, pos: Vector2, target_intensity: float, move_direction: Vector2, delta: float):
+func update_or_create_player_shockwave(id: int, pos: Vector2, target_intensity: float, move_direction: Vector2, delta: float, color: Vector3 = Vector3(0.0, 0.5, 1.0), radius: float = 0.3):
     var found_wave = null
     for sw in shockwaves:
         if sw.get("id") == id:
@@ -74,42 +82,42 @@ func update_or_create_player_shockwave(id: int, pos: Vector2, target_intensity: 
             break
             
     if found_wave == null:
-        # 如果没找到，并且玩家正在移动，则创建一个新的
         if target_intensity > 0.0 and shockwaves.size() < MAX_SHOCKWAVES:
-            var uv_pos = _world_to_background_uv(pos)  # 修改：使用新方法转换UV
-            if uv_pos == Vector2(-1, -1):  # 如果超出边界，返回
+            var uv_pos = _world_to_background_uv(pos)
+            if uv_pos == Vector2(-1, -1):
                 return
             var new_shockwave = {
                 "id": id,
                 "position": uv_pos,
-                "intensity": 0.0, # 初始强度为0
+                "intensity": 0.0,
                 "direction": move_direction.normalized(),
+                "color": color,  # 新增
+                "radius": radius # 新增
             }
             shockwaves.append(new_shockwave)
             found_wave = new_shockwave
     
-    # 对找到的或新创建的玩家波纹进行更新
     if found_wave != null:
-        var uv_pos = _world_to_background_uv(pos)  # 修改：动态更新UV
-        if uv_pos == Vector2(-1, -1):  # 如果超出边界，强度渐变为0
+        var uv_pos = _world_to_background_uv(pos)
+        if uv_pos == Vector2(-1, -1):
             found_wave.intensity = move_toward(found_wave.intensity, 0.0, 2.0 * delta)
             return
         found_wave.position = uv_pos
         if move_direction.length() > 0.01:
             found_wave.direction = move_direction.normalized()
-        # 关键改动：将强度更新的逻辑移到这里，由目标强度驱动
         found_wave.intensity = move_toward(found_wave.intensity, target_intensity, 2.0 * delta)
+        found_wave.color = color   # 更新颜色（如果需要动态变化）
+        found_wave.radius = radius # 更新范围
 
 # 将世界位置转换为背景UV（动态处理偏移和大小）
 func _world_to_background_uv(world_pos: Vector2) -> Vector2:
     if not is_instance_valid(background):
-        return Vector2(-1, -1)  # 无效返回
+        return Vector2(-1, -1)
     
-    var rect = background.get_global_rect()  # 获取背景全局矩形（考虑位置和大小）
+    var rect = background.get_global_rect()
     var uv_x = (world_pos.x - rect.position.x) / rect.size.x
     var uv_y = (world_pos.y - rect.position.y) / rect.size.y
     
-    # 边界检查：如果UV不在[0,1]范围内，返回无效（避免无效冲击波）
     if uv_x < 0.0 or uv_x > 1.0 or uv_y < 0.0 or uv_y > 1.0:
         return Vector2(-1, -1)
     

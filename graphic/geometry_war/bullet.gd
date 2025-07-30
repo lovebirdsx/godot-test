@@ -18,4 +18,11 @@ func _process(delta: float) -> void:
 	global_position += direction * speed * delta
 
 func _exit_tree() -> void:
-	shockwave_manager.create_shockwave(global_position, 1.0, Vector2.ZERO, 1.5)
+	shockwave_manager.create_shockwave(
+		global_position, 
+		1.0, 
+		Vector2.ZERO, 
+		1.5,
+		Vector3(0.4, 0.9, 1.0),
+		0.15,
+	)

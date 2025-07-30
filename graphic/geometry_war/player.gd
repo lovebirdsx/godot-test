@@ -28,5 +28,7 @@ func _process(delta: float) -> void:
 		global_position,
 		target_intensity,
 		move_dir,
-		delta
+		delta,
+		Vector3(0.9, 0.9, 0.9),
+		0.3
 	)

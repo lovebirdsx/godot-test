@@ -4,15 +4,16 @@
 
 [resource]
 shader = ExtResource("1_u31hr")
-shader_parameter/grid_color = Color(0.093, 0.165333, 0.31, 0.588235)
-shader_parameter/small_grid_thickness = 0.02
+shader_parameter/grid_color = Color(0.05, 0.05, 0.05, 1)
+shader_parameter/small_grid_thickness = 0.01
 shader_parameter/small_grid_density = 32.0
 shader_parameter/big_grid_thickness = 0.03
 shader_parameter/big_grid_density = 16.0
 shader_parameter/shockwave_centers = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/shockwave_intensities = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/shockwave_directions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/shockwave_colors = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/shockwave_radii = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/active_shockwaves = 0
-shader_parameter/shockwave_radius = 0.2
 shader_parameter/distortion_strength = 0.02
 shader_parameter/directional_influence = 0.5
