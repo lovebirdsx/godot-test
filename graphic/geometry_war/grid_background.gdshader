@@ -2,8 +2,10 @@ shader_type canvas_item;
 
 // 常规网格设置
 uniform vec4 grid_color : source_color = vec4(0.3, 0.8, 1.0, 1.0);
-uniform float grid_thickness = 0.02;
-uniform float grid_density = 20.0;
+uniform float small_grid_thickness = 0.01;
+uniform float small_grid_density = 80.0;
+uniform float big_grid_thickness = 0.03;
+uniform float big_grid_density = 16.0;
 
 // 波纹设置
 const int MAX_SHOCKWAVES = 10; // 定义着色器能同时处理的最大波纹数量
@@ -69,8 +71,10 @@ void fragment() {
 	}
 
 	vec2 distorted_uv = UV + total_offset;
-	float grid_value = grid(distorted_uv, grid_thickness, grid_density);
-	vec3 final_color = grid_value * grid_color.rgb;
+	float small_grid_value = grid(distorted_uv, small_grid_thickness, small_grid_density);
+	float big_grid_value = grid(distorted_uv, big_grid_thickness, big_grid_density);
+	float combined_grid_value = max(small_grid_value, big_grid_value * 1.5); // 大网格稍亮以突出
+	vec3 final_color = combined_grid_value * grid_color.rgb;
 
 	// 添加辉光效果
 	// final_color += grid_color.rgb * total_glow * 0.7;

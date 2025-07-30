@@ -1,27 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://bww5vje827faf"]
+[gd_scene load_steps=9 format=3 uid="uid://bww5vje827faf"]
 
 [ext_resource type="Material" uid="uid://o564cgv35gij" path="res://geometry_war/grid_background.tres" id="1_467u0"]
-[ext_resource type="Texture2D" uid="uid://5mwpfnhnycd0" path="res://icon.svg" id="2_xvqv1"]
+[ext_resource type="Texture2D" uid="uid://bfb4kite27501" path="res://explosion/player.exr" id="3_lkd38"]
 [ext_resource type="Script" uid="uid://c7v66ek3v5ds5" path="res://geometry_war/player.gd" id="3_t02iy"]
 [ext_resource type="Script" uid="uid://dxrg7yfcv4nlo" path="res://geometry_war/shockwave_manager.gd" id="4_c3gmf"]
 [ext_resource type="Environment" uid="uid://bmj3gn8f3goxy" path="res://geometry_war/geometry_war_environment.tres" id="5_kl3y0"]
-[ext_resource type="Texture2D" uid="uid://c5tu2i6n5yceh" path="res://geometry_war/blue_triangle.exr" id="6_t02iy"]
 [ext_resource type="Texture2D" uid="uid://d0jwogshaufq1" path="res://geometry_war/blue_triangle_exposure.exr" id="7_kl3y0"]
-[ext_resource type="Texture2D" uid="uid://cv77hrpshbq2s" path="res://geometry_war/blue_triangle_lighting.exr" id="8_veec3"]
-[ext_resource type="Texture2D" uid="uid://cvbsssr38kpka" path="res://geometry_war/green_triangle.exr" id="9_4agmf"]
 [ext_resource type="Texture2D" uid="uid://bxiiagywakfv4" path="res://geometry_war/green_triangle_exposure.exr" id="10_05ujx"]
-[ext_resource type="Texture2D" uid="uid://cw8847ng4o0f" path="res://geometry_war/green_triangle_lighting.exr" id="11_5q76u"]
-[ext_resource type="Texture2D" uid="uid://dnjgi68d70xga" path="res://geometry_war/red_triangle.exr" id="12_bgnxv"]
 [ext_resource type="Texture2D" uid="uid://b5gc17frgs3cb" path="res://geometry_war/red_triangle_exposure.exr" id="13_lxhfo"]
-[ext_resource type="Texture2D" uid="uid://cqioan8xnxmjh" path="res://geometry_war/red_triangle_lighting.exr" id="14_6phra"]
 
 [node name="GeometryWar" type="Node2D"]
 
 [node name="Background" type="ColorRect" parent="."]
 material = ExtResource("1_467u0")
 custom_minimum_size = Vector2(100, 100)
-offset_right = 1155.0
-offset_bottom = 647.0
+offset_top = -75.0
+offset_right = 1280.0
+offset_bottom = 1205.0
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(525, 324)
@@ -29,8 +24,9 @@ script = ExtResource("3_t02iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 rotation = 1.5708
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_xvqv1")
+texture = ExtResource("3_lkd38")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="ShockwaveManager" type="Node" parent="."]
 script = ExtResource("4_c3gmf")
@@ -38,70 +34,16 @@ script = ExtResource("4_c3gmf")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_kl3y0")
 
-[node name="BlueTriangle" type="Sprite2D" parent="."]
-self_modulate = Color(4, 4, 4, 1)
-position = Vector2(336, 132)
-rotation = 0.523598
-texture = ExtResource("6_t02iy")
-
-[node name="Label" type="Label" parent="BlueTriangle"]
-offset_left = -86.4615
-offset_top = -29.7558
-offset_right = 15.5385
-offset_bottom = -6.75581
-rotation = -0.523598
-text = "modulate = 4"
-
 [node name="BlueTriangleExposure" type="Sprite2D" parent="."]
 position = Vector2(249, 259)
 texture = ExtResource("7_kl3y0")
-
-[node name="Label2" type="Label" parent="BlueTriangleExposure"]
-offset_left = -64.0
-offset_top = -66.0
-offset_right = 56.0
-offset_bottom = -43.0
-text = "exposure in exr"
-
-[node name="BlueTriangleLighting" type="Sprite2D" parent="."]
-position = Vector2(253, 392)
-rotation = -0.523598
-texture = ExtResource("8_veec3")
-
-[node name="Label3" type="Label" parent="BlueTriangleLighting"]
-offset_left = -29.8276
-offset_top = -70.3372
-offset_right = 76.1724
-offset_bottom = -47.3372
-rotation = 0.523598
-text = "lighting in exr"
-
-[node name="GreenTriangle" type="Sprite2D" parent="."]
-position = Vector2(367, 471)
-rotation = -0.785397
-texture = ExtResource("9_4agmf")
 
 [node name="GreenTriangleExposure" type="Sprite2D" parent="."]
 position = Vector2(482, 480)
 rotation = -1.309
 texture = ExtResource("10_05ujx")
 
-[node name="GreenTriangleLighting" type="Sprite2D" parent="."]
-position = Vector2(609, 481)
-rotation = -2.09439
-texture = ExtResource("11_5q76u")
-
-[node name="RedTriangle" type="Sprite2D" parent="."]
-position = Vector2(581, 117)
-rotation = 1.83259
-texture = ExtResource("12_bgnxv")
-
 [node name="RedTriangleExposure" type="Sprite2D" parent="."]
 position = Vector2(775, 369)
 rotation = -2.87979
 texture = ExtResource("13_lxhfo")
-
-[node name="RedTriangleLighting" type="Sprite2D" parent="."]
-position = Vector2(732, 221)
-rotation = 2.61799
-texture = ExtResource("14_6phra")
