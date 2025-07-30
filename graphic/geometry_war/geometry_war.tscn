@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bfb4kite27501" path="res://explosion/player.exr" id="3_lkd38"]
 [ext_resource type="Script" uid="uid://c7v66ek3v5ds5" path="res://geometry_war/player.gd" id="3_t02iy"]
 [ext_resource type="Script" uid="uid://dxrg7yfcv4nlo" path="res://geometry_war/shockwave_manager.gd" id="4_c3gmf"]
-[ext_resource type="Environment" uid="uid://cag2ufklu3eqf" path="res://geometry_war/exr_test_environment.tres" id="5_lkd38"]
+[ext_resource type="Environment" uid="uid://bmj3gn8f3goxy" path="res://geometry_war/geometry_war_environment.tres" id="5_kl3y0"]
 [ext_resource type="Texture2D" uid="uid://d0jwogshaufq1" path="res://geometry_war/blue_triangle_exposure.exr" id="7_kl3y0"]
 [ext_resource type="Texture2D" uid="uid://bxiiagywakfv4" path="res://geometry_war/green_triangle_exposure.exr" id="10_05ujx"]
 [ext_resource type="Texture2D" uid="uid://b5gc17frgs3cb" path="res://geometry_war/red_triangle_exposure.exr" id="13_lxhfo"]
@@ -37,10 +37,10 @@ player_trail_fade_rate = 0.4
 player_trail_max_count = 10
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("5_lkd38")
+environment = ExtResource("5_kl3y0")
 
 [node name="BlueTriangleExposure" type="Sprite2D" parent="."]
-position = Vector2(249, 259)
+position = Vector2(250, 259)
 texture = ExtResource("7_kl3y0")
 
 [node name="GreenTriangleExposure" type="Sprite2D" parent="."]
