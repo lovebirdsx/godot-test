@@ -17,3 +17,5 @@ shader_parameter/shockwave_radii = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0,
 shader_parameter/active_shockwaves = 0
 shader_parameter/distortion_strength = 0.01
 shader_parameter/directional_influence = 0.3
+shader_parameter/lighting_strength = 0.5
+shader_parameter/glow_strength = 10.0

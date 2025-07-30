@@ -18,6 +18,8 @@ uniform int active_shockwaves;
 
 uniform float distortion_strength = 0.1;
 uniform float directional_influence = 1.0;
+uniform float lighting_strength = 2.0; // 控制照明贡献的强度
+uniform float glow_strength = 1.5; // 控制辉光贡献的强度
 
 float grid(vec2 uv, float thickness, float density) {
     vec2 grid_uv = uv * vec2(density);
@@ -35,8 +37,8 @@ void fragment() {
         vec2 center = shockwave_centers[i];
         float intensity = shockwave_intensities[i];
         vec2 move_direction = shockwave_directions[i];
-        vec3 color = shockwave_colors[i]; // 新增
-        float radius = shockwave_radii[i]; // 新增：使用每个shockwave的范围
+        vec3 color = shockwave_colors[i];
+        float radius = shockwave_radii[i];
 
         float dist_to_center = distance(UV, center);
         vec2 dir_from_center = normalize(UV - center);
@@ -62,9 +64,8 @@ void fragment() {
 
         total_offset += final_direction * wave * distortion_strength;
         total_glow += wave_intensity;
-
-        // 新增：照明效果 - 在范围内添加颜色和亮度
-        vec3 lighting_contrib = color * wave_intensity * 2.0; // *2.0 以增强高亮
+        
+        vec3 lighting_contrib = color * wave_intensity * lighting_strength;
         total_lighting += lighting_contrib;
     }
 
@@ -81,7 +82,7 @@ void fragment() {
     vec3 final_color = base_color + combined_grid_value * total_lighting;
 
     // 添加辉光：仅在网格线上基于total_glow增加emission-like效果（WorldEnvironment会glow它）
-    final_color += combined_grid_value * grid_color.rgb * total_glow * 1.5;
+    final_color += combined_grid_value * grid_color.rgb * total_glow * glow_strength; // 使用参数替换硬编码*1.5
 
     COLOR = vec4(final_color, 1.0);
 }

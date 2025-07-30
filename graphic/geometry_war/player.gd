@@ -3,6 +3,7 @@ extends Node2D
 @export var speed: float = 300
 @export var rotation_speed: float = 20
 @export var shockwave_radius: float = 0.3
+@export var shockwave_color: Color = Color.WHITE
 
 @onready var shockwave_manager: ShockwaveManager = get_node("/root/GeometryWar/ShockwaveManager")
 var bullet_scene = preload("res://geometry_war/bullet.tscn")
@@ -12,6 +13,13 @@ func _input(event: InputEvent) -> void:
 		var bullet_instance = bullet_scene.instantiate()
 		bullet_instance.global_position = global_position
 		bullet_instance.direction = Vector2.RIGHT.rotated(rotation) 
+		get_parent().add_child(bullet_instance)
+	elif event is InputEventMouseButton and event.pressed:
+		var mouse_position = get_global_mouse_position()
+		var direction = (mouse_position - global_position).normalized()
+		var bullet_instance = bullet_scene.instantiate()
+		bullet_instance.global_position = global_position
+		bullet_instance.direction = direction
 		get_parent().add_child(bullet_instance)
 
 func _process(delta: float) -> void:
@@ -30,6 +38,6 @@ func _process(delta: float) -> void:
 		target_intensity,
 		move_dir,
 		delta,
-		Vector3(0.2, 0.2, 0.2),
-		shockwave_radius
+		Vector3(shockwave_color.r, shockwave_color.g, shockwave_color.b),
+		shockwave_radius,
 	)

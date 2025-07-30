@@ -3,6 +3,7 @@ class_name Bullet
 
 @export var speed: float = 800
 @export var fly_range: float = 200
+@export var explosion_effect_scene: PackedScene = preload("res://explosion/explosion.tscn")
 
 @onready var shockwave_manager: ShockwaveManager = get_node("/root/GeometryWar/ShockwaveManager")
 
@@ -13,6 +14,13 @@ func _ready() -> void:
 	rotation = direction.angle()
 	await get_tree().create_timer(fly_time).timeout
 	queue_free()
+	_play_explosion_effect()
+
+func _play_explosion_effect() -> void:
+	if explosion_effect_scene:
+		var explosion_instance = explosion_effect_scene.instantiate()
+		explosion_instance.global_position = global_position
+		get_parent().add_child(explosion_instance)
 
 func _process(delta: float) -> void:
 	global_position += direction * speed * delta
