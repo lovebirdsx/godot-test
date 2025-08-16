@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://ha72wpunbjwa"]
+
+[ext_resource type="Texture2D" uid="uid://ba6uhwrycw6up" path="res://status/1-3.png" id="1_a2vxq"]
+
+[sub_resource type="Shader" id="Shader_a2vxq"]
+code = "shader_type canvas_item;
+
+uniform vec4 freeze_tint : source_color = vec4(0.5, 0.8, 1.0, 1.0); // 使用一个更亮的蓝色
+uniform float effect_strength : hint_range(0.0, 1.0) = 1.0;
+uniform float desaturation : hint_range(0.0, 1.0) = 0.8; // 去色强度
+
+uniform sampler2D frost_noise; // 在材质属性中拖入你创建的 NoiseTexture2D
+uniform float frost_coverage : hint_range(0.0, 1.0) = 0.7; // 霜冻覆盖的程度
+uniform float frost_shimmer_speed = 0.1; // 冰晶闪烁速度
+
+void fragment() {
+    vec4 original_color = COLOR;
+    
+    float luminance = dot(original_color.rgb, vec3(0.299, 0.587, 0.114));
+    vec3 grayscale = vec3(luminance);
+    vec3 desaturated_color = mix(original_color.rgb, grayscale, desaturation);
+    vec3 frozen_color = mix(desaturated_color, freeze_tint.rgb * luminance, 0.5);
+    vec3 base_frozen_rgb = mix(original_color.rgb, frozen_color, effect_strength);
+    
+    // 使用 TIME 来让霜冻纹理缓慢移动，产生动态感
+    // 通过两个不同速度、不同方向的采样叠加，可以制造更自然的闪烁效果
+    float frost1 = texture(frost_noise, UV + TIME * frost_shimmer_speed).r;
+    float frost2 = texture(frost_noise, UV - TIME * frost_shimmer_speed * 0.7).g;
+    float frost_value = frost1 * frost2; // 将两个通道相乘，得到更复杂的图案
+
+    // 使用 smoothstep 创建一个硬边过渡，让霜冻的边缘更清晰
+    // frost_coverage 控制阈值，决定有多少区域被覆盖
+    float frost_mask = smoothstep(1.0 - frost_coverage, 1.0 - frost_coverage + 0.1, frost_value);
+
+    // 将霜冻（白色）叠加到基础冰冻颜色上
+    // 乘以 luminance 可以让暗处的霜不那么显眼，更有体积感
+    vec3 final_rgb = base_frozen_rgb + vec3(frost_mask) * luminance;
+
+    COLOR = vec4(final_rgb, original_color.a);
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_muhej"]
+noise_type = 4
+frequency = 0.0003
+cellular_jitter = 0.1
+cellular_return_type = 0
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o0pkk"]
+noise = SubResource("FastNoiseLite_muhej")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rgcq"]
+shader = SubResource("Shader_a2vxq")
+shader_parameter/freeze_tint = Color(0.2, 0.5, 0.7, 1)
+shader_parameter/effect_strength = 1.0
+shader_parameter/desaturation = 1.0
+shader_parameter/frost_noise = SubResource("NoiseTexture2D_o0pkk")
+shader_parameter/frost_coverage = 0.577
+shader_parameter/frost_shimmer_speed = 2.145
+
+[node name="Enemy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(3, 3, 0.7, 1)
+material = SubResource("ShaderMaterial_5rgcq")
+texture = ExtResource("1_a2vxq")
